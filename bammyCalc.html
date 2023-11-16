@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iBammy Calculatore</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="bammyCalc.js"></script>
+</head>
+<body style="margin: 15px;">
+    <div class="container" style="background-color: rgb(46, 46, 105); width: 30%; border-radius: 50px;">
+        <div class="row">
+            <div class="cpl-12 p-3">
+    <h2 style="color: whitesmoke;">iBammy Calcolatore</h2>
+    <p style="color:aqua;"><em>...se puoi calcolarlo, allora puoi risolverlo</em></p>
+    <div style="border: 5px solid rgb(106, 138, 236); background-color: black; height: 50px; text-align: right; color: aqua; font-size:x-large ;" id="screen" class="screen">0</div>
+    <div class="mt-3">
+    <div class="row p-2">
+    <button class="col btn btn-sm btn-info m-1" onclick="showMeThis('1')">1</button>
+    <button class="col btn btn-sm btn-info m-1" onclick="showMeThis('2')">2</button>
+    <button class="col btn btn-sm btn-info m-1" onclick="showMeThis('3')">3</button>
+    <button class="col btn btn-sm btn-secondary m-1" onclick="mathCalc('+')"> 
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+          </svg>
+    </button>
+    
+    </div>
+    
+    <div class="row p-2">
+    <button class="col btn btn-sm btn-info m-1" onclick="showMeThis('4')">4</button>
+    <button class="col btn btn-sm btn-info m-1" onclick="showMeThis('5')">5</button>
+    <button class="col btn btn-sm btn-info m-1" onclick="showMeThis('6')">6</button>
+    <button class="col btn btn-sm btn-secondary m-1" onclick="mathCalc('-')"> 
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-dash-circle-fill" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z"/>
+          </svg>
+    </button>
+    
+    </div>
+    
+    <div class="row p-2">
+    <button class="col btn btn-sm btn-info m-1" onclick="showMeThis('7')">7</button>
+    <button class="col btn btn-sm btn-info m-1" onclick="showMeThis('8')">8</button>
+    <button class="col btn btn-sm btn-info m-1" onclick="showMeThis('9')">9</button>
+    <button class="col btn btn-sm btn-secondary m-1" onclick="mathCalc('/')"> 
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-slash-circle-fill" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.646-2.646a.5.5 0 0 0-.708-.708l-6 6a.5.5 0 0 0 .708.708l6-6z"/>
+          </svg>
+    </button>
+    
+    </div>
+    
+    <div class="row p-2">
+    <button class="col btn btn-sm btn-danger m-1" onclick="clearScreen()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-c-circle-fill" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM8.146 4.992c.961 0 1.641.633 1.729 1.512h1.295v-.088c-.094-1.518-1.348-2.572-3.03-2.572-2.068 0-3.269 1.377-3.269 3.638v1.073c0 2.267 1.178 3.603 3.27 3.603 1.675 0 2.93-1.02 3.029-2.467v-.093H9.875c-.088.832-.75 1.418-1.729 1.418-1.224 0-1.927-.891-1.927-2.461v-1.06c0-1.583.715-2.503 1.927-2.503Z"/>
+          </svg>
+    </button>
+    <button class="col btn btn-sm btn-info m-1" onclick="showMeThis('0')">0</button>
+    <button class="col btn btn-sm btn-warning m-1" onclick="backSpace()"> 
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-backspace-fill" viewBox="0 0 16 16">
+        <path d="M15.683 3a2 2 0 0 0-2-2h-7.08a2 2 0 0 0-1.519.698L.241 7.35a1 1 0 0 0 0 1.302l4.843 5.65A2 2 0 0 0 6.603 15h7.08a2 2 0 0 0 2-2V3zM5.829 5.854a.5.5 0 1 1 .707-.708l2.147 2.147 2.146-2.147a.5.5 0 1 1 .707.708L9.39 8l2.146 2.146a.5.5 0 0 1-.707.708L8.683 8.707l-2.147 2.147a.5.5 0 0 1-.707-.708L7.976 8 5.829 5.854z"/>
+        </svg> 
+    </button>
+    <button class="col btn btn-sm btn-secondary m-1" onclick="mathCalc('*')"> 
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+        </svg>
+    </button>
+    </div>
+
+    <div class="row p-2">
+        <button class="col btn btn-sm btn-secondary m-3" onclick="mathCalc('**')">
+        <img src="https://icons-for-free.com/iconfiles/png/512/mathematics+square+square+sign+x+square+icon-1320086705394949431.png" width="16px height=16px">
+        </button>
+        <button class="col btn btn-sm btn-secondary m-3" onclick="mathCalc('Math.sqrt')" style="font-size: 25px;"> &radic;
+        </button>
+        <button class="col btn btn-sm btn-secondary m-3" onclick="showMeThis('.')"> &sdot;
+        </button>
+        <button class="col btn btn-lg btn-success m-3" onclick="equalTo('=')">=</button>
+        
+    </div>
+    </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+</body>
+</html>
